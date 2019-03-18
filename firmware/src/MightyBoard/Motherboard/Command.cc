@@ -734,7 +734,7 @@ static void pstop_incr() {
 // keeps track of the current amount of retraction and applies extrusion factors, if enabled
 static void applyExtrusionFactorAbsolute(int32_t *steps, uint8_t extruder) {
 	int32_t move = *steps - lastFilamentPosition[extruder];
-	if (move > (int16_t) currentRetraction[extruder]) {
+	if (move > (uint16_t) currentRetraction[extruder]) {
 		// the current movement exhausts all our stored up retraction
 		FPTYPE extrusionPart = ITOFP(move - currentRetraction[extruder]);
 		*steps = lastFilamentPosition[extruder]
@@ -750,7 +750,7 @@ static void applyExtrusionFactorAbsolute(int32_t *steps, uint8_t extruder) {
 
 static void applyExtrusionFactorRelative(int32_t *steps, uint8_t extruder) {
 	int32_t move = *steps;
-	if (move > (int16_t) currentRetraction[extruder]) {
+	if (move > (uint16_t) currentRetraction[extruder]) {
 		// the current movement exhausts all our stored up retraction
 		FPTYPE extrusionPart = ITOFP(move - currentRetraction[extruder]);
 		*steps = currentRetraction[extruder] + FPTOI(FPMULT2(steppers::extrusionFactor, extrusionPart));
@@ -758,7 +758,7 @@ static void applyExtrusionFactorRelative(int32_t *steps, uint8_t extruder) {
 	} else {
 		// move is either a retraction, or a (partial) reprime, don't scale, but keep track of it
 		// this may overflow in the case of huge retractions, but these are exceedingly rare
-		currentRetraction[extruder] += (int16_t) -move;
+		currentRetraction[extruder] += (uint16_t) -move;
 	}
 }
 
