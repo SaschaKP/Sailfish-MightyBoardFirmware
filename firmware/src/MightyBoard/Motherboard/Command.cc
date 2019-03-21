@@ -797,6 +797,9 @@ static void handleMovementCommand(const uint8_t &command) {
 #else
 			pop32();
 #endif
+			if (steppers::z_Offset_Change) {
+				z -= steppers::z_Offset_Change;
+			}
 			if (steppers::alterExtrusion) {
 				applyExtrusionFactorAbsolute(&a, 0);
 #if EXTRUDERS > 1
@@ -856,6 +859,11 @@ static void handleMovementCommand(const uint8_t &command) {
 				}
 			}
 #endif
+			if (steppers::z_Offset_Change) {
+				z -= steppers::z_Offset_Change;
+				if (relative & (1 << (Z_AXIS)))
+					steppers::z_Offset_Change = 0;
+			}
 			if (steppers::alterExtrusion) applyExtrusionFactors(&a, &b, relative);
 			int32_t ab[2] = {a,b};
 
@@ -910,6 +918,11 @@ static void handleMovementCommand(const uint8_t &command) {
 				}
 			}
 #endif
+			if (steppers::z_Offset_Change) {
+				z -= steppers::z_Offset_Change;
+				if (relative & (1 << (Z_AXIS)))
+					steppers::z_Offset_Change = 0;
+			}
 			if (steppers::alterExtrusion) applyExtrusionFactors(&a, &b, relative);
 			int32_t ab[2] = {a,b};
 
