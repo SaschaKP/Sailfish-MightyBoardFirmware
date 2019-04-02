@@ -20,14 +20,14 @@ M6 T0 (wait for toolhead, and HBP to reach temperature)
 M6 T1 (wait for toolhead, and HBP to reach temperature)
 G130 X127 Y127 Z40 A127 B127 (Set Stepper motor Vref to defaults)
 G54
-M108 T0(Set tool)
+M135 T0(Set tool)
 G0 X-110.5 Y-74     (Position Nozzle)
 G0 Z0.6         (Position Height)
 G1 E4 F50.0      (Create Anchor)
 G92 E0
 (**** end of start.gcode ****)
 G54
-M108 T0(Set tool)
+M135 T0(Set tool)
 (<layer> 0.16 )
 G1 X-70 Y-60.60 Z0.9 F2400.0
 G1 F798.0
@@ -144,7 +144,7 @@ G1 E92.00
 G1 F743.802
 M103
 G55
-M108 T1
+M135 T1
 M18 A B
 G92 E0
 G1 X-34 Y-60 Z0.9 F2400.0
