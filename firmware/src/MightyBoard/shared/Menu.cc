@@ -1022,6 +1022,10 @@ void JogModeScreen::reset() {
 	jogging = false;
 	distanceChanged = modeChanged = false;
 	jogMode = JOG_MODE_X;
+#if defined(AUTO_LEVEL) && defined(AUTO_LEVEL_IGNORE_ZMIN_ONBUILD)
+	oldZvalIgnore = stepperAxis[Z_AXIS].disabled_endstop;
+	steppers::disableZMinEnd(true);
+#endif
 	for (uint8_t i = 0; i < 3; i++) {
 	    digiPotOnEntry[i] = steppers::getAxisPotValue(i);
 	    steppers::resetAxisPot(i);
@@ -1154,8 +1158,10 @@ void JogModeScreen::jog(ButtonArray::ButtonName direction) {
 	position[index] += steps;
 	int32_t interval = stepperAxis_minInterval(index);
 	if (interval < 500) interval = 500;
-	if ( direction == ButtonArray::UP || direction == ButtonArray::DOWN )
+	if (direction == ButtonArray::UP || direction == ButtonArray::DOWN)
+	{
 		steppers::setTargetNew(position, interval, 0, 0);
+	}
 }
 
 void JogModeScreen::notifyButtonPressed(ButtonArray::ButtonName button) {
@@ -1165,6 +1171,9 @@ void JogModeScreen::notifyButtonPressed(ButtonArray::ButtonName button) {
 		    steppers::setAxisPotValue(i, digiPotOnEntry[i]);
 		if ( !jog_paused ) steppers::enableAxes(0xff, false);
 		BOARD_STATUS_CLEAR(Motherboard::STATUS_MANUAL_MODE);
+#if defined(AUTO_LEVEL) && defined(AUTO_LEVEL_IGNORE_ZMIN_ONBUILD)
+		steppers::disableZMinEnd(oldZvalIgnore);
+#endif
 		interface::popScreen();
 		break;
         case ButtonArray::DOWN:

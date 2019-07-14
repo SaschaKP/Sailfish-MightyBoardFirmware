@@ -515,12 +515,18 @@ private:
 	uint8_t    digiPotOnEntry[3];
 	bool       distanceChanged, modeChanged;
 	bool       jogging;
+	//we just ignore endstops in manual mode, if those defines are true
+#if defined(AUTO_LEVEL) && defined(AUTO_LEVEL_IGNORE_ZMIN_ONBUILD)
+	bool oldZvalIgnore;
+#endif
 
 	void jog(ButtonArray::ButtonName direction);
 
 public:
         // This screen uses RIGHT
-        JogModeScreen() : Screen(_BV((uint8_t)ButtonArray::RIGHT)) {}
+        JogModeScreen() : Screen(_BV((uint8_t)ButtonArray::RIGHT))
+		{
+		}
 
 	micros_t getUpdateRate() {return 50L * 1000L;}
 
