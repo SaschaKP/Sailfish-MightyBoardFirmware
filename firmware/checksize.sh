@@ -9,7 +9,7 @@ if [[ $OS == Darwin ]]
 then
 	AWK_PROG=
 else
-	AWK_PROG="-e"
+	AWK_PROG=
 fi
 
 if [[ $BUILD == *2560* ]] || [[ $BUILD == *azteeg* ]]

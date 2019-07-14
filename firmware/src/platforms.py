@@ -117,6 +117,12 @@ platforms = {
 #      USE_ZMAX_HOME                 -- When used, any printer will use the ZMAX as homing, this will
 #                                       allow, for modified printer with autoleveling probe on zmin
 #                                       to use the zmax for homing purposes.
+#                                       * WARNING * without a zmax switch on the bottom, the plate will 
+#                                       hit it and you can damage your machine!
+#                                       but also, using the zmin on the probe, could potentially
+#                                       damage it too, since when homing the sensor will be away from
+#                                       the platform too, if uncertain or if you haven't modified the
+#                                       printer DON'T USE THIS ONE.
 #
 #   squeeze    -- Source files to compile --mcall-prologues so as to save
 #                 code space.
