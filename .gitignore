@@ -15,3 +15,5 @@ firmware/svnversion.awk
 NOTES.TXT
 
 .idea
+/firmware/src/.vs
+/firmware/src/MightyBoard/.vs

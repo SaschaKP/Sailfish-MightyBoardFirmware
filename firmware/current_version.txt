@@ -1,3 +1,5 @@
+7.11.0.0.0
+ * Various bug fixes, also fixed a serious bug in autoleveling that won't take into account for probe offset. This bug is also present in original version, so it's a prior bug (offset won't be added there too, and commands don't know about probe positioning). This will cause, effectively, to make probe ineffective if variations of z are really high. SaschaKP
 7.10.0.1.0
  * incorporation of other PWM handler, that uses screen display commands (M70 P{fan percentage} (F) - M70 P100 (F) will do full fan throttle) - thanks to TehMillhouse
  * incorporation of filament extrusion live changer - thanks to TehMillhouse
