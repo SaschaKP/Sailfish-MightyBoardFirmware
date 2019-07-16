@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/uoitalia/Sailfish-MightyBoardFirmware.svg?branch=master)](https://travis-ci.org/uoitalia/Sailfish-MightyBoardFirmware)
+[![Build Status](https://travis-ci.org/SaschaKP/Sailfish-MightyBoardFirmware.svg?branch=master)](https://travis-ci.org/SaschaKP/Sailfish-MightyBoardFirmware)
 
 	Table of Contents
 	1.0 Introduction
