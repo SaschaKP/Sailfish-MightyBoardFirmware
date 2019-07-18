@@ -1868,8 +1868,10 @@ void runCommandSlice() {
 					     }
 					     alevel_state |= 1 << idx;
 					     int32_t position[3], poffset[2];
+						 cli();
 						 eeprom_read_block(poffset, (void*)eeprom_offsets::ALEVEL_PROBE_OFFSETS,
 							 2 * sizeof(int32_t));
+						 sei();
 					     position[0] = currentPoint[X_AXIS] + poffset[0];
 					     position[1] = currentPoint[Y_AXIS] + poffset[1];
 					     position[2] = currentPoint[Z_AXIS];
