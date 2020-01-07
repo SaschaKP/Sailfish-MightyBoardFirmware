@@ -2545,6 +2545,7 @@ void HomeOffsetsModeScreen::notifyButtonPressed(ButtonArray::ButtonName button) 
 		if (repetitions > 50) {
 			homePosition[currentIndex] = 0;
 		}
+		break;
 	default:
 		break;
 	}
