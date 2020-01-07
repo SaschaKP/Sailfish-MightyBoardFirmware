@@ -758,7 +758,7 @@ public:
         uint8_t do_home_offsets;
         const prog_uchar *msg;
 
-	HomeOffsetsModeScreen(): Screen(_BV((uint8_t)ButtonArray::UP) | _BV((uint8_t)ButtonArray::DOWN)) {}
+	HomeOffsetsModeScreen(): Screen(_BV((uint8_t)ButtonArray::UP) | _BV((uint8_t)ButtonArray::DOWN) | _BV((uint8_t)ButtonArray::RIGHT)) {}
 
         micros_t getUpdateRate() {return 50L * 1000L;}
 
