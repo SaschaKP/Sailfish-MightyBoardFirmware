@@ -2540,6 +2540,11 @@ void HomeOffsetsModeScreen::notifyButtonPressed(ButtonArray::ButtonName button) 
 		if(do_home_offsets == 4) // live z change during a print
 			steppers::z_Offset_Change += incr;
 		break;
+	case ButtonArray::RIGHT:
+		// RESET
+		if (repetitions > 50) {
+			homePosition[currentIndex] = 0;
+		}
 	default:
 		break;
 	}
