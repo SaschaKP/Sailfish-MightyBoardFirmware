@@ -396,6 +396,15 @@ inline void handlePlayback(const InPacket& from_host, OutPacket& to_host) {
 	to_host.append8(startBuildFromSD(buildName,0));
 }
 
+static bool isX3G(const char *fnbuf) {
+	size_t len = strnlen(fnbuf, MAX_FILE_LEN);
+	if (len < 5) {
+		return false;
+	}
+	return fnbuf[len - 4] == '.' &&
+			(fnbuf[len - 3] == 'x' || fnbuf[len - 3] == 's') &&
+			fnbuf[len - 2] == '3' && fnbuf[len - 1] == 'g';
+}
     // retrieve SD file names
 void handleNextFilename(const InPacket& from_host, OutPacket& to_host) {
 	to_host.append8(RC_OK);
@@ -414,7 +423,7 @@ void handleNextFilename(const InPacket& from_host, OutPacket& to_host) {
 	do {
 		sdcard::directoryNextEntry(fnbuf,sizeof(fnbuf),0,&isdir);
 		if (fnbuf[0] == '\0') break;
-		else if ( (fnbuf[0] != '.') ||
+		else if ( (fnbuf[0] != '.' && isX3G(fnbuf)) ||
 			  ( isdir && fnbuf[1] == '.' && fnbuf[2] == 0) ) break;
 	} while (true);
 	// Note that the old directoryNextEntry() always returned SD_SUCCESS
