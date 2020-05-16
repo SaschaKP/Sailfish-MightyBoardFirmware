@@ -55,7 +55,14 @@ int main(int argc, const char *argv[])
      if (argc < 2)
 	  in_ctx = s3g_open(0, NULL, O_RDONLY, 0);
      else
+     {
+	  if (!strcmp(argv[1], "?") || !strcmp(argv[1], "-h"))
+	  {
+	        usage(NULL, argv[0]);
+		return -1;
+	  }
 	  in_ctx = s3g_open(0, (void *)argv[1], O_RDONLY, 0);
+     }
 
      if (!in_ctx)
 	  // Assume that s3g_open() has complained
