@@ -1,3 +1,6 @@
+**WARNING - THIS FIRMWARE IS NOW DISCONTINUED**
+**- CONSIDER SWITCHING TO MARLIN THAT FULLY SUPPORTS ALL REPLICATOR CLONES -**
+
 
 [![Build Status](https://travis-ci.org/SaschaKP/Sailfish-MightyBoardFirmware.svg?branch=master)](https://travis-ci.org/SaschaKP/Sailfish-MightyBoardFirmware)
 
